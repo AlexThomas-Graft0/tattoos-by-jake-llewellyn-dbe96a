@@ -1,58 +1,49 @@
-import { DeployButton } from "@/components/deploy-button";
-import { EnvVarWarning } from "@/components/env-var-warning";
-import { AuthButton } from "@/components/auth-button";
-import { Hero } from "@/components/hero";
-import { ThemeSwitcher } from "@/components/theme-switcher";
-import { ConnectSupabaseSteps } from "@/components/tutorial/connect-supabase-steps";
-import { SignUpUserSteps } from "@/components/tutorial/sign-up-user-steps";
-import { hasEnvVars } from "@/lib/utils";
-import Link from "next/link";
 import { Suspense } from "react";
+import { Navbar } from "@/components/Navbar";
+import { Hero } from "@/components/hero";
+import { Experience } from "@/components/Experience";
+import { Portfolio } from "@/components/Portfolio";
+import { Services } from "@/components/Services";
+import { Aftercare } from "@/components/Aftercare";
+import { Enquiry } from "@/components/Enquiry";
+import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col items-center">
-      <div className="flex-1 w-full flex flex-col gap-20 items-center">
-        <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
-          <div className="w-full max-w-5xl flex justify-between items-center p-3 px-5 text-sm">
-            <div className="flex gap-5 items-center font-semibold">
-              <Link href={"/"}>Next.js Supabase Starter</Link>
-              <div className="flex items-center gap-2">
-                <DeployButton />
-              </div>
-            </div>
-            {!hasEnvVars ? (
-              <EnvVarWarning />
-            ) : (
-              <Suspense>
-                <AuthButton />
-              </Suspense>
-            )}
-          </div>
-        </nav>
-        <div className="flex-1 flex flex-col gap-20 max-w-5xl p-5">
+    <main className="min-h-screen">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: "{\"@context\":\"https://schema.org\",\"@type\":\"LocalBusiness\",\"name\":\"Tattoos By Jake Llewellyn\",\"description\":\"At Tattoos by jakellewellyn, I offer a range of services to cater to your individual tattoo needs. I specialise in custom designs, client-specified artwork, and cover-ups (depending on the existing design). All tattoo styles are welcome, ensuring your body art is exactly as you envision it.\",\"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"6A Gwerthonor Place Gilfach Bargoed CF81 8JQ\"},\"url\":\"https://tattoos-by-jake-llewellyn-dbe96a.duckbyte.co\"}" }} />
+      <Navbar />
+      <section id="hero" className="scroll-mt-20">
+        <Suspense fallback={<div className="min-h-[30vh]" />}>
           <Hero />
-          <main className="flex-1 flex flex-col gap-6 px-4">
-            <h2 className="font-medium text-xl mb-4">Next steps</h2>
-            {hasEnvVars ? <SignUpUserSteps /> : <ConnectSupabaseSteps />}
-          </main>
-        </div>
-
-        <footer className="w-full flex items-center justify-center border-t mx-auto text-center text-xs gap-8 py-16">
-          <p>
-            Powered by{" "}
-            <a
-              href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
-              target="_blank"
-              className="font-bold hover:underline"
-              rel="noreferrer"
-            >
-              Supabase
-            </a>
-          </p>
-          <ThemeSwitcher />
-        </footer>
-      </div>
+        </Suspense>
+      </section>
+      <section id="experience" className="scroll-mt-20">
+        <Suspense fallback={<div className="min-h-[30vh]" />}>
+          <Experience />
+        </Suspense>
+      </section>
+      <section id="portfolio" className="scroll-mt-20">
+        <Suspense fallback={<div className="min-h-[30vh]" />}>
+          <Portfolio />
+        </Suspense>
+      </section>
+      <section id="services" className="scroll-mt-20">
+        <Suspense fallback={<div className="min-h-[30vh]" />}>
+          <Services />
+        </Suspense>
+      </section>
+      <section id="aftercare" className="scroll-mt-20">
+        <Suspense fallback={<div className="min-h-[30vh]" />}>
+          <Aftercare />
+        </Suspense>
+      </section>
+      <section id="enquiry" className="scroll-mt-20">
+        <Suspense fallback={<div className="min-h-[30vh]" />}>
+          <Enquiry />
+        </Suspense>
+      </section>
+      <Footer />
     </main>
   );
 }
